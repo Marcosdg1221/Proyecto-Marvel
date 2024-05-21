@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:MarvelDEINT.ViewModels"
+             x:Class="MarvelDEINT.Clasificacion">
+
+    <ContentPage.BindingContext>
+        <viewModels:ClasificacionViewModel/>
+    </ContentPage.BindingContext>
+
+    <RefreshView IsRefreshing="{Binding IsRefreshing}"
+             Command="{Binding RefreshCommand}">
+        <ScrollView>
+            <FlexLayout Direction="Row"
+                    Wrap="Wrap"
+                    AlignItems="Center"
+                    AlignContent="Center"
+                    BindableLayout.ItemsSource="{Binding Items}"
+                    BindableLayout.ItemTemplate="{StaticResource ColorItemTemplate}" >
+                <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <Label Text="Clasificación de Personajes" FontSize="Large" HorizontalOptions="CenterAndExpand" Margin="0,20,0,10"/>
+
+                    <ListView ItemsSource="{Binding Clasificacion}"
+              HasUnevenRows="True">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                        <Label Text="{Binding Nombre}" FontSize="Large" HorizontalTextAlignment="Center" VerticalOptions="Center"/>
+                                        <Label Text="{Binding Puntuacion}" FontSize="Large" HorizontalTextAlignment="Center" VerticalOptions="Center"/>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                    <Button Text="Puntuar un combate"
+            Clicked="PuntuarPagina"
+            HorizontalOptions="Center"
+            Margin="0,20,0,0"/>
+                </StackLayout>
+            </FlexLayout>
+        </ScrollView>
+    </RefreshView>
+</ContentPage>

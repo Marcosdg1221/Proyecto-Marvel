@@ -1,0 +1,64 @@
+Entidades:
+clsPersonaje.cs 
+
+	(int IdPersonaje {get;}, 
+	string Nombre {get;}, 
+	string Foto {get; }, 
+	int Puntuacion {get; set})
+
+clsCombate.cs 
+
+	(DateTime Fecha {get; set} (set se puede quitar, pero se me ocurrió que a lo mejor el usuario pueda cambiar la fecha para puntuar un combate que pasó otro día), 
+	int PuntuacionPersonaje1 {get; set;}, //Ya que el usuario va a puntuar 
+	int PuntuacionPersonaje2 {get; set;}, 
+	clsPersonaje Personaje1 {get; set;}, //Ya que el usuario va a elegir personajes
+	clsPersonaje Personaje2 {get; set;})
+
+DAL:
+
+clsListadoDAL.cs 
+- public static List<clsPersonaje> ListaPersonajesDAL()
+- public static List<clsCombate> ListaCombatesDAL()
+- public static List<clsPersonaje> PuntuacionPersonajesDAL()
+
+clsConexion.cs
+-  public static string CadenaConexion()
+
+BL:
+clsListadoBL.cs
+- public static List<clsPersonaje> ListaPersonajesBL()
+- public static List<clsCombate> ListaCombatesBL()
+- public static List<clsPersonaje> PuntuacionPersonajesBL()
+
+ViewModels:
+ClasificacionViewModel:
+atributos y propiedades:
+- ObservableCollection<clsPersonaje> Clasificacion {get;}
+método
+- void CargarLaClasificacion()
+
+ViewModel:
+
+atributos:
+
+- clsPersonaje personajeSeleccionado1 
+- clsPersonaje personajeSeleccionado2 
+- int puntuacion1 
+- int puntuacion2 
+- bool sePuedeEnviarPuntuacion
+
+propiedades:
+
+- ObservableCollection<clsPersonaje> ListaPersonajes1 {get;}
+- ObservableCollection<clsPersonaje> ListaPersonajes2 {get;}
+- bool SePuedeEnviarPuntuacion {get; [set onPropertyChanged]} //Para que el boton se deshabilite si por ejemplo combatan el mismo personaje en el personaje 1 y en el personaje 2
+
+métodos y funciones:
+
+Métodos para el botón que se habilite o no dependiendo de las circunstancias, para enviar la puntuación, para que se compruebe si un combate existe o no, para insertar un nuevo combate y para subir a la base de datos las puntuaciones por el usuario, en ese orden podría ser algo como:
+
+- void ActualizarSePuedeEnviarPuntuacion()
+- void EnviarPuntuacion()
+- clsCombate ObtenerCombateExistente()
+- void InsertarCombate(clsCombate combate)
+- void ActualizarPuntuaciones(clsCombate combate)

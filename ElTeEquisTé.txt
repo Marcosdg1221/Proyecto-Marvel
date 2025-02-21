@@ -5,10 +5,10 @@ clsPersonaje.cs
 	string Nombre {get;}, 
 	string Foto {get; }, 
 	int Puntuacion {get; set})
-
+ 
 clsCombate.cs 
 
-	(DateTime Fecha {get; set} (set se puede quitar, pero se me ocurrió que a lo mejor el usuario pueda cambiar la fecha para puntuar un combate que pasó otro día), 
+	(DateTime Fecha {get; set} (set se puede quitar, pero se me ocurriÃ³ que a lo mejor el usuario pueda cambiar la fecha para puntuar un combate que pasÃ³ otro dÃ­a), 
 	int PuntuacionPersonaje1 {get; set;}, //Ya que el usuario va a puntuar 
 	int PuntuacionPersonaje2 {get; set;}, 
 	clsPersonaje Personaje1 {get; set;}, //Ya que el usuario va a elegir personajes
@@ -34,7 +34,7 @@ ViewModels:
 ClasificacionViewModel:
 atributos y propiedades:
 - ObservableCollection<clsPersonaje> Clasificacion {get;}
-método
+mÃ©todo
 - void CargarLaClasificacion()
 
 ViewModel:
@@ -53,9 +53,9 @@ propiedades:
 - ObservableCollection<clsPersonaje> ListaPersonajes2 {get;}
 - bool SePuedeEnviarPuntuacion {get; [set onPropertyChanged]} //Para que el boton se deshabilite si por ejemplo combatan el mismo personaje en el personaje 1 y en el personaje 2
 
-métodos y funciones:
+mÃ©todos y funciones:
 
-Métodos para el botón que se habilite o no dependiendo de las circunstancias, para enviar la puntuación, para que se compruebe si un combate existe o no, para insertar un nuevo combate y para subir a la base de datos las puntuaciones por el usuario, en ese orden podría ser algo como:
+MÃ©todos para el botÃ³n que se habilite o no dependiendo de las circunstancias, para enviar la puntuaciÃ³n, para que se compruebe si un combate existe o no, para insertar un nuevo combate y para subir a la base de datos las puntuaciones por el usuario, en ese orden podrÃ­a ser algo como:
 
 - void ActualizarSePuedeEnviarPuntuacion()
 - void EnviarPuntuacion()
